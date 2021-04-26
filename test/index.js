@@ -1,5 +1,5 @@
-const { yeetGif } = require('../dist');
 const { resolve } = require('path');
+const { yeetGif } = require('../dist');
 
 yeetGif(
   resolve(__dirname, './some_image.png'),
