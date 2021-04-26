@@ -4,6 +4,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "tsc",
+    "lint": "eslint --ext=.ts,.tsx src",
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "start": "next start"
   },
   "dependencies": {
