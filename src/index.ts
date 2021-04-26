@@ -23,14 +23,14 @@ const getExecutable = () => {
 };
 
 export const yeetGif = async (
-  inputPath: string,
-  outputPath: string,
+  fullInputPath: string,
+  fullOutputPath: string,
   settings: YeetGifSettings
 ) => {
-  if (!inputPath) {
+  if (!fullInputPath) {
     throw new Error('No input path defined for yeetGif');
   }
-  if (!outputPath) {
+  if (!fullOutputPath) {
     throw new Error('No output path defined for yeetGif');
   }
   if (!settings.commands.length) {
@@ -48,16 +48,16 @@ export const yeetGif = async (
   });
 
   try {
-    await mkdir(dirname(outputPath), { recursive: true });
-    await rmfr(outputPath);
+    await mkdir(dirname(fullOutputPath), { recursive: true });
+    await rmfr(fullOutputPath);
     await execa(
-      `<${inputPath}`,
-      [yeetGifArguments.join(' | '), `>${outputPath}`],
+      `<${fullInputPath}`,
+      [yeetGifArguments.join(' | '), `>${fullOutputPath}`],
       {
         shell: true,
       }
     );
-    return outputPath;
+    return fullOutputPath;
   } catch (error) {
     console.error('/////  errror  /////');
     console.error(error);
