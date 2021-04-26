@@ -1,6 +1,6 @@
 {
-  "name": "with-typescript-styled-components",
-  "version": "1.0.0",
+  "name": "yeetgif",
+  "version": "0.0.1",
   "scripts": {
     "build": "tsc ",
     "postbuild": "mkdir -p /vercel/workpath0/src/yeetgif && cp -r ./src/yeetgif /vercel/workpath0/src",
