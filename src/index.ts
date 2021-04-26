@@ -1,23 +1,23 @@
-import execa from "execa";
-import os from "os";
-import { promises } from "fs";
-import rmfr from "rmfr";
-import { resolve, dirname } from "path";
-import { YeetGifSettings } from "./types";
+import execa from 'execa';
+import os from 'os';
+import { promises } from 'fs';
+import rmfr from 'rmfr';
+import { resolve, dirname } from 'path';
+import { YeetGifSettings } from './types';
 
 const { mkdir } = promises;
 
-const isMac = (platform: string) => platform === "darwin";
+const isMac = (platform: string) => platform === 'darwin';
 
-const isLinux = (platform: string) => platform === "linux";
+const isLinux = (platform: string) => platform === 'linux';
 
 const getExecutable = () => {
   const platform = os.platform();
   if (isMac(platform)) {
-    return resolve(__dirname, "../binaries/gif_osx");
+    return resolve(__dirname, '../binaries/gif_osx');
   }
   if (isLinux(platform)) {
-    return resolve(__dirname, "../binaries/gif_linux");
+    return resolve(__dirname, '../binaries/gif_linux');
   }
   throw new Error(`Unsupported OS ${platform}`);
 };
@@ -28,13 +28,13 @@ export const yeetGif = async (
   settings: YeetGifSettings
 ) => {
   if (!inputPath) {
-    throw new Error("No input path defined for yeetGif");
+    throw new Error('No input path defined for yeetGif');
   }
   if (!outputPath) {
-    throw new Error("No output path defined for yeetGif");
+    throw new Error('No output path defined for yeetGif');
   }
   if (!settings.commands.length) {
-    throw new Error("No commands passed to yeetGif");
+    throw new Error('No commands passed to yeetGif');
   }
 
   const yeetGifArguments: string[] = [];
@@ -43,7 +43,7 @@ export const yeetGif = async (
       options as { [key: string]: string }
     ).map(([key, value]) => `--${key} ${value}`);
     yeetGifArguments.push(
-      [getExecutable(), `--quiet`, command, ...commandOptions].join(" ")
+      [getExecutable(), `--quiet`, command, ...commandOptions].join(' ')
     );
   });
 
@@ -52,14 +52,14 @@ export const yeetGif = async (
     await rmfr(outputPath);
     await execa(
       `<${inputPath}`,
-      [yeetGifArguments.join(" | "), `>${outputPath}`],
+      [yeetGifArguments.join(' | '), `>${outputPath}`],
       {
         shell: true,
       }
     );
     return outputPath;
   } catch (error) {
-    console.error("/////  errror  /////");
+    console.error('/////  errror  /////');
     console.error(error);
     error.message = error.stderr || error.message;
     throw error;

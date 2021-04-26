@@ -1,12 +1,12 @@
 export type YeetGifOptions =
-  | "quiet"
-  | "pad"
-  | "write-meta"
-  | "raw"
-  | "delay-ms";
+  | 'quiet'
+  | 'pad'
+  | 'write-meta'
+  | 'raw'
+  | 'delay-ms';
 
 type RollCommand = {
-  command: "roll";
+  command: 'roll';
   options?: {
     /** default 1 */
     revolutions?: number;
@@ -15,13 +15,13 @@ type RollCommand = {
     /** default 0 */
     phase?: number;
     /** default 1 */
-    "crop-scale"?: number;
+    'crop-scale'?: number;
   };
   arguments?: {};
 };
 
 type WobbleCommand = {
-  command: "wobble";
+  command: 'wobble';
   options?: {
     /** default 1 */
     frequency?: number;
@@ -30,13 +30,13 @@ type WobbleCommand = {
     /** default 0 */
     phase?: number;
     /** default 'sine */
-    type?: "sine" | "snap" | "saw" | "sticky";
+    type?: 'sine' | 'snap' | 'saw' | 'sticky';
   };
   arguments?: {};
 };
 
 type PulseCommand = {
-  command: "pulse";
+  command: 'pulse';
   options?: {
     /** default 0.9 */
     from?: number;
@@ -51,7 +51,7 @@ type PulseCommand = {
 };
 
 type ZoomCommand = {
-  command: "zoom";
+  command: 'zoom';
   options?: {
     /**
      * e.g. 1.0,1.5 to zoom from 100% to 150%
@@ -63,7 +63,7 @@ type ZoomCommand = {
 };
 
 type ShakeCommand = {
-  command: "shake";
+  command: 'shake';
   options?: {
     /** default 1 */
     frequency?: number;
@@ -76,12 +76,12 @@ type ShakeCommand = {
 };
 
 type WokeCommand = {
-  command: "woke";
+  command: 'woke';
   options?: {
     /** default true */
     clip?: boolean;
     /** default full */
-    type?: "full";
+    type?: 'full';
     /** default 0.9 */
     scale?: number;
     /** default 0.8 */
@@ -91,9 +91,9 @@ type WokeCommand = {
     /** default 0.8 */
     alpha?: number;
     /** default 2 */
-    "alpha-pow"?: number;
+    'alpha-pow'?: number;
     /** default 0.15 */
-    "alpha-threshold"?: number;
+    'alpha-threshold'?: number;
     /** default 0.5 */
     random?: number;
   };
@@ -104,7 +104,7 @@ type WokeCommand = {
 };
 
 type FriedCommand = {
-  command: "fried";
+  command: 'fried';
   options?: {
     /** default true */
     clip?: boolean;
@@ -130,16 +130,16 @@ type FriedCommand = {
     jpeg?: [number];
     /** default [3] */
     saturation?: [number];
-    /** default [6]*/
+    /** default [6] */
     contrast?: [number];
-    /** default [0.4]*/
+    /** default [0.4] */
     tint?: [number];
   };
   arguments?: {};
 };
 
 type HueCommand = {
-  command: "hue";
+  command: 'hue';
   options?: {
     /** default 1 */
     frequency?: number;
@@ -150,7 +150,7 @@ type HueCommand = {
     /** default [1] */
     y?: [number];
     /** default 'add' */
-    mode?: "mul" | "add" | "sub" | "pow" | "sin";
+    mode?: 'mul' | 'add' | 'sub' | 'pow' | 'sin';
   };
   arguments?: {
     HUE_OFFSETS_CSV: number[];
@@ -158,7 +158,7 @@ type HueCommand = {
 };
 
 type TintCommand = {
-  command: "tint";
+  command: 'tint';
   options?: {
     /** default 1 */
     frequency?: number;
@@ -169,7 +169,7 @@ type TintCommand = {
     /** default [1] */
     y?: [number];
     /** default 'add' */
-    mode?: "mul" | "add" | "sub" | "pow" | "sin";
+    mode?: 'mul' | 'add' | 'sub' | 'pow' | 'sin';
     /** default 0.8608454902138696 */
     center?: number;
   };
@@ -179,7 +179,7 @@ type TintCommand = {
 };
 
 type ResizeCommand = {
-  command: "resize";
+  command: 'resize';
   options?: {
     /** default 1 */
     scale?: number;
@@ -192,7 +192,7 @@ type ResizeCommand = {
 };
 
 type CropCommand = {
-  command: "command";
+  command: 'command';
   options?: {
     /** default 0 */
     threshold?: number;
@@ -201,12 +201,12 @@ type CropCommand = {
 };
 
 type OptimizeCommand = {
-  command: "optimize";
+  command: 'optimize';
   options?: {
     /** default 128 */
     kb?: number;
     /** default true */
-    "no-resize"?: boolean;
+    'no-resize'?: boolean;
     /** default 0 */
     width?: number;
     /** default 0 */
@@ -216,7 +216,7 @@ type OptimizeCommand = {
 };
 
 type CrowdCommand = {
-  command: "crowd";
+  command: 'crowd';
   options: {
     /** Crowd size - default 3 */
     n?: number;
@@ -239,12 +239,12 @@ type CrowdCommand = {
 };
 
 type EraseCommand = {
-  command: "erase";
+  command: 'erase';
   options?: {
     /** default 3 */
-    "sample-x"?: number;
+    'sample-x'?: number;
     /** default 3 */
-    "sample-y"?: number;
+    'sample-y'?: number;
     /** default 0.2 */
     tolerance?: number;
     /** default 1 */
@@ -258,24 +258,24 @@ type EraseCommand = {
 };
 
 type ChopCommand = {
-  command: "chop";
+  command: 'chop';
   options?: {};
   arguments?: {
-    COMMAND: "shuffle" | "duplicate" | "drop" | "reverse";
+    COMMAND: 'shuffle' | 'duplicate' | 'drop' | 'reverse';
   };
 };
 
 type TextCommand = {
-  command: "text";
+  command: 'text';
   options?: {
     /** default 0.7 */
-    "background-alpha"?: number;
+    'background-alpha'?: number;
     /** default 18.5 */
-    "font-size"?: number;
+    'font-size'?: number;
     /** default 0.3 */
-    "text-y"?: number;
+    'text-y'?: number;
     /** default 3 */
-    "background-padding"?: number;
+    'background-padding'?: number;
   };
   arguments?: {
     COMMAND: string;
